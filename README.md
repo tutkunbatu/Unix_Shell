@@ -5,9 +5,11 @@
 ## Project Scope:
 Unix Shell based on the tutorial of Stephen Brennan.
 This is a very basic implementation that consists of the shell commands:
-- cd
-- help
-- exit
+- read
+- parse
+- fork
+- exec
+- wait
 
 ## Limitations:
 - Commands must be on a single line.
