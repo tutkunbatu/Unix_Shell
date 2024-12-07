@@ -12,7 +12,7 @@ int bsh_launch(char **args);
 int bsh_cd(char **args);
 int bsh_help(char **args);
 int bsh_exit(char **args);
-int lsh_num_builtins();
+int bsh_num_builtins();
 
 #define BSH_RL_BUFSIZE 1024
 #define BSH_TOK_BUFSIZE 64
@@ -31,7 +31,7 @@ int(*builtin_func[]) (char **) = {
     &bsh_exit
 };
 
-int lsh_num_builtins() {
+int bsh_num_builtins() {
     return sizeof(builtin_str) / sizeof(char *);
 }
 
@@ -142,7 +142,7 @@ int bsh_help(char **args){
     printf("Type command names and arguments and hit enter.\n");
     printf("The following are built in:\n");
 
-    for (int i = 0; i < lsh_num_builtins(); i++) {
+    for (int i = 0; i < bsh_num_builtins(); i++) {
         printf("  %s\n", builtin_str[i]);
     }
     printf("Use the man command for information on other programs.\n");
@@ -158,7 +158,7 @@ int bsh_execute(char **args){
         return 1;
     }
 
-    for(int i = 0; i < lsh_num_builtins(); i++){
+    for(int i = 0; i < bsh_num_builtins(); i++){
         if (strcmp(args[0], builtin_str[i]) == 0) {
             return (*builtin_func[i])(args);
         }
